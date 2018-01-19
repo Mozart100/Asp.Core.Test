@@ -27,8 +27,9 @@ namespace TestCore
         {
             //var connection = "data source=MyData;initial catalog=ContosoUniversity1;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
             //var connection = "Data Source=.;Integrated Security=True";
-            var connection = "Server=(localdb)\\mssqllocaldb;Database=TestToli;Trusted_Connection=True;MultipleActiveResultSets=true";
-            services.AddDbContext<TestContext>(op => op.UseSqlServer(connection));
+            var connection = @"Data Source=(LocalDb)\MSSQLLocalDb;initial catalog=SchoolDatabase;Integrated Security=True";
+            //var connection = "Server=(localdb)\\mssqllocaldb;Database=TestToli2;Trusted_Connection=True;MultipleActiveResultSets=true";
+            services.AddDbContext<SchoolContext>(op => op.UseSqlServer(connection));
             services.AddMvc();
         }
 
