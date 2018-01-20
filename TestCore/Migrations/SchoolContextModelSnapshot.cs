@@ -64,6 +64,8 @@ namespace TestCore.Migrations
 
                     b.Property<string>("LastName");
 
+                    b.Property<string>("PersonalDetail");
+
                     b.HasKey("ID");
 
                     b.ToTable("Students");
