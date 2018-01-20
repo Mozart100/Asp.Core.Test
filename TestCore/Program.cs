@@ -26,8 +26,8 @@ namespace TestCore
                     var context = services.GetRequiredService<SchoolContext>();
                     DbInitializer.Initialize(context);
 
-                    var student = context.Students.FirstOrDefault();
-                    var list = student.Enrollments.ToList();
+                    //var student = context.Students.FirstOrDefault();
+                    //var list = student.Enrollments.ToList();
 
                 }
                 catch (Exception ex)
