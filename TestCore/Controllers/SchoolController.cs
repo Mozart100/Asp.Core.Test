@@ -7,18 +7,24 @@ using TestCore.Model;
 
 namespace TestCore.Controllers
 {
-    [Route("api/[controller]")]
-    public class ValuesController : Controller
+    [Route("[controller]")]
+    public class SchoolController : Controller
     {
-        public ValuesController(SchoolContext context)
+        private SchoolContext _context;
+
+        public SchoolController(SchoolContext context)
         {
             int x = 0;
+            _context = context;
         }
+
+
         // GET api/values
-        [HttpGet]
-        public IEnumerable<string> Get()
+        [HttpGet("[action]")]
+        public IEnumerable<Student> GetStudents()
         {
-            return new string[] { "value1", "value2" };
+            var students = _context.Students.ToList();
+            return students;
         }
 
         // GET api/values/5
