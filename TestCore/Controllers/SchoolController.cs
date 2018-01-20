@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using TestCore.Dto;
+using TestCore.Dto.Poco;
 using TestCore.Model;
 
 namespace TestCore.Controllers
@@ -11,20 +13,23 @@ namespace TestCore.Controllers
     public class SchoolController : Controller
     {
         private SchoolContext _context;
+        private IDtoMapper _dtoMapper;
 
-        public SchoolController(SchoolContext context)
+        public SchoolController(SchoolContext context , IDtoMapper dtoMapper)
         {
-            int x = 0;
             _context = context;
+            _dtoMapper = dtoMapper;
         }
 
 
         // GET api/values
         [HttpGet("[action]")]
-        public IEnumerable<Student> GetStudents()
+        public IEnumerable<StudentDto> GetStudents()
         {
             var students = _context.Students.ToList();
-            return students;
+
+            var dtos =_dtoMapper.ConvertToStudentDtos(students);
+            return dtos;
         }
 
         // GET api/values/5
