@@ -15,7 +15,7 @@ namespace TestCore.Controllers
         private SchoolContext _context;
         private IDtoMapper _dtoMapper;
 
-        public SchoolController(SchoolContext context , IDtoMapper dtoMapper)
+        public SchoolController(SchoolContext context, IDtoMapper dtoMapper)
         {
             _context = context;
             _dtoMapper = dtoMapper;
@@ -28,9 +28,34 @@ namespace TestCore.Controllers
         {
             var students = _context.Students.ToList();
 
-            var dtos =_dtoMapper.ConvertToStudentDtos(students);
+            var dtos = _dtoMapper.ConvertToStudentDtos(students);
             return dtos;
         }
+
+        [HttpGet("[action]/{id}")]
+        public IEnumerable<StudentDto> GetStudent([FromRoute] int id)
+        {
+            var students = _context.Students.FirstOrDefault(x => x.ID == id);
+
+            var dtos = _dtoMapper.ConvertToStudentDtos(new List<Student> { students });
+            return dtos;
+        }
+
+        [HttpGet("stam/{cusId}/doc/{orderId}")]
+        //[HttpGet("[action]/{id}")]
+        public string RoutMethod(int cusId, int orderId)
+        {
+            return "RoutMethod";
+        }
+
+
+        [HttpGet("GetMethod/{id}/{name}")]
+        //[HttpGet("[action]/{id}")]
+        public IActionResult GetMethod(int id, string name)
+        {
+            return Ok("GetMethod");
+        }
+
 
         // GET api/values/5
         [HttpGet("{id}")]

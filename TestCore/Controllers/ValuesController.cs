@@ -12,8 +12,9 @@ namespace TestCore.Controllers
     {
         public ValuesController(SchoolContext context)
         {
-            int x = 0;
         }
+
+
         // GET api/values
         [HttpGet]
         public IEnumerable<string> Get()
