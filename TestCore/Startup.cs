@@ -28,6 +28,8 @@ namespace TestCore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSwaggerGen(x => x.SwaggerDoc("v1", new Info { Title = "Core Api", Description = "Swagger Core API" }));
+            var perosnalConfig =Configuration["PersonalSql"];
+            //Configuration.Configure<TTemplate>(perosnalConfig);
 
             var connection = @"Data Source=(LocalDb)\MSSQLLocalDb;initial catalog=SchoolDatabase;Integrated Security=True";
             services.AddDbContext<SchoolContext>(op => op.UseSqlServer(connection));
