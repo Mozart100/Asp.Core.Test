@@ -49,9 +49,9 @@ namespace TestCore.Controllers
         }
 
 
-        [HttpGet("GetMethod/{id}/{name}")]
+        [HttpGet("GetMethod/id/{id}/familyName/{familyName}")]
         //[HttpGet("[action]/{id}")]
-        public IActionResult GetMethod(int id, string name)
+        public IActionResult GetMethodWithQueyString(int id,  string familyName,[FromQuery] int age)
         {
             return Ok("GetMethod");
         }
